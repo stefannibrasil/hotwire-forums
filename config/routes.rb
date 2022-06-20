@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get 'main/index'
 
+  resources :discussions, only: [:index]
+
   post "sign_up", to: "users#create"
   get "sign_up", to: "users#new"
   put "account", to: "users#update"
