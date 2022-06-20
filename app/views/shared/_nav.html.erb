@@ -14,7 +14,7 @@
         Home
       </a>
       <% if current_user %>
-        <%= link_to "Edit account", account_path %>
+        <%= link_to "Welcome, #{Current.user.username}", account_path %>
         <%= link_to "Sign out", logout_path, method: :delete %>
       <% else %>
         <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
