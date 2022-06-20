@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_15_035612) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_20_230604) do
+  create_table "discussions", force: :cascade do |t|
+    t.string "name"
+    t.boolean "pinned", default: false
+    t.boolean "closed", default: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_discussions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
     t.boolean "admin", default: false
@@ -20,4 +30,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_15_035612) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "discussions", "users"
 end
