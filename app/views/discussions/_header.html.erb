@@ -1,0 +1,16 @@
+<%= turbo_frame_tag dom_id(discussion) do %>
+  <div>
+    <h1><%= discussion.name %></h1>
+    <% if discussion.pinned? %>
+      <span>Pinned</div>
+    <% end %>
+    <% if discussion.closed? %>
+      <span>Closed</div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= link_to "Edit", edit_discussion_path(discussion) %>
+    <%= button_to "Delete", discussion_path(discussion), method: :delete, form: { data: { turbo_confirm: "Are you sure?" } } %>
+  </div>
+<% end %>
