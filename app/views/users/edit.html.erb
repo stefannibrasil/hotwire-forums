@@ -1,21 +1,45 @@
-<%= form_with model: @user, url: account_path, method: :put do |form| %>
-  <%= render partial: "shared/form_errors", locals: { object: form.object } %>
-  <div>
-    <%= form.label :username, "Current Username" %>
-    <%= form.text_field :username, disabled: true %>
+<div class="min-h-screen flex flex-col justify-center py-12 px-6 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-md">
+    <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow" />
+    <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Update your Account</h2>
   </div>
-  <div>
-    <%= form.label :password, "Password (leave blank if you don't want to change it)" %>
-    <%= form.password_field :password %>
+
+  <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+    <div class="bg-white py-8 px-6 shadow rounded-lg sm:px-10">
+      <%= form_with model: @user, url: account_path, method: :put, class: "mb-0 space-y-6" do |form| %>
+      <%= render partial: "shared/form_errors", locals: { object: form.object } %>
+        <div>
+          <%= form.label :username, "Current Username", class: "block text-sm font-medium text-gray-700" %>
+          <div class="mt-1">
+            <%= form.text_field :username, disabled: true, class: "" %>
+          </div>
+        </div>
+
+        <div>
+          <%= form.label :password, "Password (leave blank if you don't want to change it)", class: "block text-sm font-medium text-gray-700" %>
+          <div class="mt-1">
+            <%= form.password_field :password, class: "" %>
+          </div>
+        </div>
+
+        <div>
+          <%= form.label :password_confirmation, class: "block text-sm font-medium text-gray-700" %>
+          <div class="mt-1">
+            <%= form.password_field :password_confirmation, class: "" %>
+          </div>
+        </div>
+
+        <div>
+          <%= form.label :password_confirmation, "Current password (we need your current password to confirm your changes)", class: "block text-sm font-medium text-gray-700" %>
+          <div class="mt-1">
+            <%= form.password_field :password_confirmation, required: true, class: "" %>
+          </div>
+        </div>
+
+        <button class="w-full orange-button">
+          <%= form.submit "Update Account" %>
+        </button>
+      <% end %>
+    </div>
   </div>
-  <div>
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation %>
-  </div>
-  <hr/>
-  <div>
-    <%= form.label :current_password, "Current password (we need your current password to confirm your changes)" %>
-    <%= form.password_field :current_password, required: true %>
-  </div>
-  <%= form.submit "Update Account" %>
-<% end %>
+</div>

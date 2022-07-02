@@ -1,16 +1,42 @@
-<%= form_with model: @user, url: sign_up_path do |form| %>
-  <%= render partial: "shared/form_errors", locals: { object: form.object } %>
-  <div>
-    <%= form.label :username %>
-    <%= form.text_field :username, required: true %>
+<div class="min-h-screen flex flex-col justify-center py-12 px-6 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-md">
+    <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow" />
+    <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Login</h2>
+    <p class="mt-2 text-center text-sm text-gray-600 max-w">
+      Already have an account?
+      <%= link_to "Log in", login_path, class: "font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500" %>
+    </p>
   </div>
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password, required: true %>
+
+  <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+    <div class="bg-white py-8 px-6 shadow rounded-lg sm:px-10">
+      <%= form_with model: @user, url: sign_up_path, class: "mb-0 space-y-6" do |form| %>
+      <%= render partial: "shared/form_errors", locals: { object: form.object } %>
+          <div>
+            <%= form.label :username, class: "block text-sm font-medium text-gray-700" %>
+            <div class="mt-1">
+              <%= form.text_field :username, required: true, class: "" %>
+            </div>
+          </div>
+
+          <div>
+            <%= form.label :password, class: "block text-sm font-medium text-gray-700" %>
+            <div class="mt-1">
+              <%= form.password_field :password, required: true, class: "" %>
+            </div>
+          </div>
+
+          <div>
+            <%= form.label :password_confirmation, class: "block text-sm font-medium text-gray-700" %>
+            <div class="mt-1">
+              <%= form.password_field :password_confirmation, required: true, class: "" %>
+            </div>
+          </div>
+
+          <button class="w-full orange-button">
+            <%= form.submit "Sign up" %>
+          </button>
+        <% end %>
+    </div>
   </div>
-  <div>
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation, required: true %>
-  </div>
-  <%= form.submit "Sign Up" %>
-<% end %>
+</div>

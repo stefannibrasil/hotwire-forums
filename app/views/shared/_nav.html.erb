@@ -1,7 +1,7 @@
 <nav class="relative container mx-auto p-6">
   <div class="flex items-center justify-between">
     <div class="pt-2">
-      <%= image_tag 'logo.svg', alt: 'logo' %>
+      <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow" />
     </div>
     <div class="hidden md:flex space-x-6">
       <%= link_to "Discussions", discussions_path, class: "hover:text-darkGrayishBlue" %>
@@ -13,8 +13,6 @@
         <%= link_to "Login", login_path, class: "hover:text-darkGrayishBlue" %>
       <% end %>
     </div>
-    <a href="#" class="hidden p-3 px-6 pt-2 text-white bg-brightRed rounded-full baseline hover:bg-brightRedLight md:block">
-      Post a Discussion
-    </a>
+    <%= link_to "Post a Discussion", discussions_path, class: "hidden p-3 px-6 pt-2 text-white bg-brightRed rounded-full baseline hover:bg-brightRedLight md:block" %>
   </div>
 </nav>
