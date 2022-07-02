@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
 
   has_many :discussions, dependent: :destroy
+  has_many :posts, dependent: :destroy
 
   def downcase_username
     self.username = username.downcase
