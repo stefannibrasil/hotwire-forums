@@ -90,6 +90,37 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@rails/actiontext@npm:^6.0.5":
+  version: 6.1.6
+  resolution: "@rails/actiontext@npm:6.1.6"
+  dependencies:
+    "@rails/activestorage": ^6.0.0
+  peerDependencies:
+    trix: ^1.2.0
+  checksum: 8ef0fe41c5b971ef5211e0c07f5cee7868a38deb8b0fa6b2b387248f7e963065fe3de43f348b8ee6f09a2a9b91bdc02e7c63ae2cd456b8b793b127b89ee8be71
+  languageName: node
+  linkType: hard
+
+"@rails/activestorage@npm:^6.0.0":
+  version: 6.1.6
+  resolution: "@rails/activestorage@npm:6.1.6"
+  dependencies:
+    spark-md5: ^3.0.0
+  checksum: 699e036e1a2634a6a03734c7fd548e82cd99df481ee2e8f0ea052b950fbddcaa073bf7feff4a1525f1dc569a88800f4e119efb6a9547cb1b07b0085be0c00e02
+  languageName: node
+  linkType: hard
+
+"@tailwindcss/forms@npm:^0.5.2":
+  version: 0.5.2
+  resolution: "@tailwindcss/forms@npm:0.5.2"
+  dependencies:
+    mini-svg-data-uri: ^1.2.3
+  peerDependencies:
+    tailwindcss: ">=3.0.0 || >= 3.0.0-alpha.1"
+  checksum: 3c4df23491d14b37d8cef88d0f3df80f92b684b801d59c23d600773a4ccac11353a555ca36bea68ae4a82134f9c030d1353c05890a5f0085c1c40c649f806640
+  languageName: node
+  linkType: hard
+
 "@tootallnate/once@npm:2":
   version: 2.0.0
   resolution: "@tootallnate/once@npm:2.0.0"
@@ -184,10 +215,13 @@ __metadata:
   dependencies:
     "@hotwired/stimulus": ^3.0.1
     "@hotwired/turbo-rails": ^7.1.3
+    "@rails/actiontext": ^6.0.5
+    "@tailwindcss/forms": ^0.5.2
     autoprefixer: latest
     esbuild: ^0.14.43
     postcss: latest
     tailwindcss: latest
+    trix: ^2.0.0-beta.0
   languageName: unknown
   linkType: soft
 
@@ -1098,6 +1132,15 @@ autoprefixer@latest:
   languageName: node
   linkType: hard
 
+"mini-svg-data-uri@npm:^1.2.3":
+  version: 1.4.4
+  resolution: "mini-svg-data-uri@npm:1.4.4"
+  bin:
+    mini-svg-data-uri: cli.js
+  checksum: 997f1fbd8d59a70f03761e18626d335197a3479cb9d1ff75678e4b64b864d32a0b8fc18115eabde035e5299b8b4a354a78e57dd6ac10f9d604162a6170898d09
+  languageName: node
+  linkType: hard
+
 "minimatch@npm:^3.1.1":
   version: 3.1.2
   resolution: "minimatch@npm:3.1.2"
@@ -1631,6 +1674,13 @@ autoprefixer@latest:
   languageName: node
   linkType: hard
 
+"spark-md5@npm:^3.0.0":
+  version: 3.0.2
+  resolution: "spark-md5@npm:3.0.2"
+  checksum: 5feebff0bfabcecf56ba03af3e38fdb068272ed41fbf0a94ff9ef65b9bb9cb1dd69be3684db6542e62497b1eac3ae324c07ac4dcb606465dc36ca048177077bf
+  languageName: node
+  linkType: hard
+
 "ssri@npm:^9.0.0":
   version: 9.0.1
   resolution: "ssri@npm:9.0.1"
@@ -1731,6 +1781,13 @@ tailwindcss@latest:
   dependencies:
     is-number: ^7.0.0
   checksum: f76fa01b3d5be85db6a2a143e24df9f60dd047d151062d0ba3df62953f2f697b16fe5dad9b0ac6191c7efc7b1d9dcaa4b768174b7b29da89d4428e64bc0a20ed
+  languageName: node
+  linkType: hard
+
+"trix@npm:^2.0.0-beta.0":
+  version: 2.0.0-beta.0
+  resolution: "trix@npm:2.0.0-beta.0"
+  checksum: a10efdfb56548dee4892dba457b42472d080cb02904d8cc43475f68edc749f3ac3afe4f2820fe9e652ad00d8ce53448670f61f776f719c6b6d9d0828964351fe
   languageName: node
   linkType: hard
 
