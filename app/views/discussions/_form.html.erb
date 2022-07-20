@@ -1,40 +1,40 @@
-<%= form_with(model: discussion) do |form| %>
-  <% if discussion.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(discussion.errors.count, "error") %> prevented this discussions from being saved:
-      <ul>
-        <% discussion.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+<div class="min-h-screen flex flex-col justify-center py-12 px-6 lg:px-8">
+  <div class="bg-white py-8 px-6 shadow rounded-lg sm:px-10">
+    <%= form_with model: discussion, class: "mb-0 space-y-6" do |form| %>
+      <%= render partial: "shared/form_errors", locals: { object: form.object } %>
+        <div>
+          <%= form.label :name, class: "block text-sm font-medium text-gray-700" %>
+          <div class="mt-1">
+            <%= form.text_field :name, placeholder: "How do I...?", class: "" %>
+          </div>
+        </div>
+
+        <div>
+          <%= form.label :pinned, class: "block text-sm font-medium text-gray-700" %>
+          <div class="mt-1">
+            <%= form.check_box :pinned, class: "" %>
+          </div>
+        </div>
+
+        <div>
+          <%= form.label :closed, class: "block text-sm font-medium text-gray-700" %>
+          <div class="mt-1">
+            <%= form.check_box :closed, class: "" %>
+          </div>
+        </div>
+
+        <% if discussion.new_record? %>
+          <%= form.fields_for :posts do |p| %>
+            <div class="mt-1">
+              <%= form.label :body %>
+              <%= p.rich_text_area :body, placeholder: "Kickoff the discussion", class: "" %>
+            </div>
+          <% end %>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name, placeholder: "How do I...?" %>
+        <button class="orange-button">
+          <%= form.submit %>
+        </button>
+      <% end %>
   </div>
-
-  <div>
-    <%= form.label :pinned %>
-    <%= form.check_box :pinned %>
-  </div>
-
-  <div>
-    <%= form.label :closed %>
-    <%= form.check_box :closed %>
-  </div>
-
-  <% if discussion.new_record? %>
-    <%= form.fields_for :posts do |p| %>
-      <div class="mb-3">
-        <%= form.label :body %>
-        <%= p.rich_text_area :body, placeholder: "Kickoff the discussion" %>
-      </div>
-    <% end %>
-  <% end %>
-
-  <div>
-    <%= form.submit %>
-  </div
-<% end %>
+</div>

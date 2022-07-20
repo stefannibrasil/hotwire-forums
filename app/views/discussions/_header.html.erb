@@ -1,15 +1,17 @@
 <%= turbo_frame_tag dom_id(discussion) do %>
   <div>
-    <h1><%= discussion.name %></h1>
-    <% if discussion.pinned? %>
-      <span>Pinned</div>
-    <% end %>
-    <% if discussion.closed? %>
-      <span>Closed</div>
-    <% end %>
+    <h1 class="text-4xl font-bold"><%= discussion.name %></h1>
+      <div class="mt-2">
+        <% if discussion.pinned? %>
+          <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-1000">Pinned</span>
+        <% end %>
+        <% if discussion.closed? %>
+          <span class="bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-900">Closed</span>
+        <% end %>
+      </div>
   </div>
 
-  <div>
+  <div class="mt-2">
     <%= link_to "Edit", edit_discussion_path(discussion) %>
     <%= button_to "Delete", discussion_path(discussion), method: :delete, form: { data: { turbo_confirm: "Are you sure?" } } %>
   </div>
