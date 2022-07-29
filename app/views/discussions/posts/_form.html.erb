@@ -1,0 +1,16 @@
+<%= turbo_frame_tag "#{dom_id(post)}_form", target: "_top" do %>
+  <%= form_with(model: [post.discussion, post]) do |form| %>
+    <% if post.errors.any? %>
+      <%= render partial: "shared/form_errors", locals: { object: form.object } %>
+    <% end %>
+
+    <div class="mt-1">
+      <%= form.label :body, class: "hidden" %>
+      <%= form.rich_text_area :body, placeholder: "Add your comment", autofocus: true %>
+    </div>
+
+    <button class="orange-button mt-2">
+      <%= form.submit "Comment" %>
+    </button>
+  <% end %>
+<% end %>

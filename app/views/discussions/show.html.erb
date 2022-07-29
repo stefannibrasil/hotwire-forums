@@ -1,2 +1,8 @@
 <%= turbo_stream_from @discussion %>
 <%= render(partial: "discussions/header", locals: { discussion: @discussion }) %>
+
+<hr class="divide-y divide-solid">
+
+<div id="<%= dom_id(@new_post) %>">
+  <%= render("discussions/posts/form", post: @new_post) %>
+</div>
