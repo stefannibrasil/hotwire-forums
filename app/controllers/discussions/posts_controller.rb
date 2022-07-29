@@ -2,6 +2,24 @@ module Discussions
   class PostsController < ApplicationController
     before_action :authenticate_user!
     before_action :set_discussion
+    before_action :set_post, only: [:show, :edit, :update]
+
+    def show
+    end
+
+    def edit
+    end
+
+    def update
+      respond_to do |format|
+        if @post.update(post_params)
+          format.html { redirect_to @post.discussion, notice: "Comment Updated" }
+        else
+          format.turbo_stream
+          format.html { render :edit, status: :unprocessable_entity }
+        end
+      end
+    end
 
     def create
       @post = @discussion.posts.new(post_params)
@@ -17,6 +35,10 @@ module Discussions
     end
 
     private
+
+    def set_post
+      @post = @discussion.posts.find(params[:id])
+    end
 
     def set_discussion
       @discussion = Discussion.find(params[:discussion_id])

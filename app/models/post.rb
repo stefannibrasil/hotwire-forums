@@ -11,4 +11,10 @@ class Post < ApplicationRecord
     partial: "discussions/posts/post",
     locals: { post: self }
   }
+
+  after_update_commit -> {
+    broadcast_replace_to discussion,
+    partial: "discussions/posts/post",
+    locals: { post: self }
+  }
 end

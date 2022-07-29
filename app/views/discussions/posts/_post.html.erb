@@ -1,8 +1,14 @@
-<div class="block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"">
-  <%= render(partial: "discussions/posts/header", locals: { post: post }) %>
-  <hr class="divide-y divide-solid">
+<%= turbo_frame_tag dom_id(post) do %>
+  <div class="block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <%= render(partial: "discussions/posts/header", locals: { post: post }) %>
+    <hr class="divide-y divide-solid">
 
-  <p class="font-normal text-gray-700 dark:text-gray-400 mt-2">
-    <%= post.body %>
-  </p>
-</div>
+    <p class="font-normal text-gray-700 dark:text-gray-400 mt-2">
+      <%= post.body %>
+    </p>
+
+    <div class="py-3 border-t border-gray-300 text-gray-600 ">
+      <%= link_to "Edit", edit_discussion_post_path(post.discussion, post), data: { turbo_frame: dom_id(post) } %>
+    </div>
+  </div>
+<% end %>
