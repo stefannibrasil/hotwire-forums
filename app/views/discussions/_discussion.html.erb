@@ -1,8 +1,12 @@
 <div id="<%= dom_id(discussion) %>">
-  <h2><%= link_to discussion.name, discussion %></h2>
-  Pinned: <%= discussion.pinned %> | Closed: <%= discussion.closed %>
-  <div>
-    <%= link_to "Edit", edit_discussion_path(discussion) %> |
+  <h1 class="font-bold text-2xl"><%= link_to discussion.name, discussion %></h1>
+  Pinned: <%= discussion.pinned %> | Closed: <%= discussion.closed %><br />
+  Posted in: <%= discussion.category_name %> | Posts: <%= discussion.posts_count %>
+  <div class="flex">
+    <div style="padding-right: 4px;">
+      <%= link_to "Edit", edit_discussion_path(discussion) %> |
+    </div>
     <%= button_to "Delete", discussion_path(discussion), method: :delete, form: { data: { turbo_confirm: "Are you sure?" } } %>
   </div>
+  <br />
 </div>

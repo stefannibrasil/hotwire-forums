@@ -1,17 +1,8 @@
-<div id="<%= dom_id category %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= category.name %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Discussions count:</strong>
-    <%= category.discussions_count %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this category", category, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this category', edit_category_path(category), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+<div class="flex justify-between" id="<%= dom_id(category) %>"  >
+  <div><h4><%= category.name %></h4></div>
+  <div>
+    <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-1000">
+      <%= category.discussions_count if category.discussions_count&.positive? %>
+    </span>
+  </div>
 </div>
