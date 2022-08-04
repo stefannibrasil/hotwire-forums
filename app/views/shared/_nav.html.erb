@@ -5,6 +5,7 @@
     </div>
     <div class="hidden md:flex space-x-6">
       <%= link_to "Discussions", discussions_path, class: "hover:text-darkGrayishBlue" %>
+      <%= link_to "Categories", categories_path, class: "hover:text-darkGrayishBlue" %>
       <% if current_user %>
         <%= link_to Current.user.username, account_path, class: "hover:text-darkGrayishBlue" %>
         <%= button_to "Sign out", logout_path, method: :delete, class: "hover:text-darkGrayishBlue" %>
