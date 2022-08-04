@@ -2,12 +2,25 @@ module Discussions
   class PostsController < ApplicationController
     before_action :authenticate_user!
     before_action :set_discussion
-    before_action :set_post, only: [:show, :edit, :update]
+    before_action :set_post, only: [:show, :edit, :update, :destroy]
 
     def show
     end
 
     def edit
+    end
+
+    def create
+      @post = @discussion.posts.new(post_params)
+      
+      respond_to do |format|
+        if @post.save
+          format.html { redirect_to discussion_path(@discussion), notice: "Post created" }
+        else
+          format.turbo_stream
+          format.html { render :new, status: :unprocessable_entity }
+        end
+      end
     end
 
     def update
@@ -21,19 +34,15 @@ module Discussions
       end
     end
 
-    def create
-      @post = @discussion.posts.new(post_params)
-
+    def destroy
+      @post.destroy
+      
       respond_to do |format|
-        if @post.save
-          format.html { redirect_to discussion_path(@discussion), notice: "Post created" }
-        else
-          format.turbo_stream
-          format.html { render :new, status: :unprocessable_entity }
-        end
+        format.turbo_stream { }
+        format.html { redirect_to @post.discussion, notice: "Comment deleted" }
       end
     end
-
+    
     private
 
     def set_post
