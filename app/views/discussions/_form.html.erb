@@ -10,6 +10,16 @@
         </div>
 
         <div>
+          <%= form.label :category_id, "Choose a Category", class: "block text-sm font-medium text-gray-700" %>
+          <div class="mt-1">
+            <%= form.collection_select :category_id, Category.sorted, :id, :name,
+              { include_blank: "Pick a category..." },
+              { autofocus: false, class: "" }
+            %>
+          </div>
+        </div>
+
+        <div>
           <%= form.label :pinned, class: "block text-sm font-medium text-gray-700" %>
           <div class="mt-1">
             <%= form.check_box :pinned, class: "" %>
