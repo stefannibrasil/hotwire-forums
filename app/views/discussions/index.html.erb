@@ -1,4 +1,8 @@
-<%= turbo_stream_from 'discussions' %>
+<% if @category.present? %>
+  <%= turbo_stream_from @category %>
+<% else %>
+  <%= turbo_stream_from 'discussions' %>
+<% end %>
 
 <h1 class="text-4xl font-bold">Discussions</h1>
 
@@ -12,8 +16,11 @@
   </div>
 
   <div>
+    <% if @category %>
+      <h4 class="font-bold text-2xl">Viewing discussions in <%= @category.name %></h4>
+    <% end %>
     <div id="discussions">
-      <%= render @discussions %>
+      <%= render partial: "discussions/discussion", collection: @discussions %>
     </div>
     <button class="orange-button">  
       <%= link_to "New Discussion", new_discussion_path %>

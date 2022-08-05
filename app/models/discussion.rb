@@ -10,6 +10,8 @@ class Discussion < ApplicationRecord
 
   accepts_nested_attributes_for :posts
 
+  broadcasts_to :category, inserts_by: :prepend
+
   broadcasts
 
   def to_param

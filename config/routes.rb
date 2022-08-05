@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :categories
   # Defines the root path route ("/")
   root "main#index"
 
@@ -7,7 +6,13 @@ Rails.application.routes.draw do
 
   resources :discussions do
     resources :posts, module: :discussions
+
+    collection do
+      get "category/:id", to: "categories/discussions#index", as: :category
+    end
   end
+
+  resources :categories
 
   post "sign_up", to: "users#create"
   get "sign_up", to: "users#new"
