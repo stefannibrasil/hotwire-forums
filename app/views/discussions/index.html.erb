@@ -19,9 +19,15 @@
     <% if @category %>
       <h4 class="font-bold text-2xl">Viewing discussions in <%= @category.name %></h4>
     <% end %>
-    <div id="discussions">
-      <%= render partial: "discussions/discussion", collection: @discussions %>
-    </div>
+    <% if params[:page].blank? || params[:page].eql?('1') %>
+      <div id="discussions"></div>
+    <% end %>
+    <%= render partial: "discussions/discussion", collection: @discussions %>
+
+    <hr class="mb-4">
+
+    <%== pagy_nav(@pagy) %>
+
     <button class="orange-button">  
       <%= link_to "New Discussion", new_discussion_path %>
     </button>
