@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :discussions, dependent: :destroy
   has_many :posts, dependent: :destroy
+  has_many :discussion_subscriptions, dependent: :destroy
 
   def downcase_username
     self.username = username.downcase
