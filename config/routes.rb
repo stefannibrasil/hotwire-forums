@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  # Defines the root path route ("/")
-  root "main#index"
-
-  get 'main/index'
+  root to: "discussions#index"
 
   resources :discussions do
     resources :posts, module: :discussions
@@ -29,5 +26,4 @@ Rails.application.routes.draw do
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
   get "login", to: "sessions#new"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 end
