@@ -1,7 +1,7 @@
 <h4>Notifications</h4>
 <p><%= discussion.subscribed_reason(user) %></p>
 <% if discussion.subscribed?(user) %>
-  <%= link_to "Unsubscribe", root_path %>
+  <%= button_to "Unsubscribe", discussion_notifications_path(discussion), method: :post %>
 <% else %>
-  <%= link_to "Subscribe", root_path %>
+  <%= button_to "Subscribe", discussion_notifications_path(discussion), method: :post %>
 <% end %>
