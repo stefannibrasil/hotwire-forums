@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-turbo-frame {
+/* turbo-frame {
   display: block;
   border: 1px solid blue;
-}
+} */
 
 @layer base {
   .orange-button {
