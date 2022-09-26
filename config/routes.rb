@@ -13,6 +13,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :notifications, only: :index do
+    collection do
+      post '/mark_as_read', to: "notifications#read_all", as: :read
+    end
+  end
+
   resources :categories
 
   post "sign_up", to: "users#create"
